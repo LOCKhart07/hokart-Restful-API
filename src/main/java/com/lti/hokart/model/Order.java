@@ -25,10 +25,6 @@ public class Order {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product product;
-
-    @ManyToOne
     @JoinColumn(name = "app_user_id", nullable = false)
     private AppUser user;
 
@@ -45,7 +41,6 @@ public class Order {
     public Order(int id, Product product, AppUser user, Date orderDate, String status) {
         super();
         this.id = id;
-        this.product = product;
         this.user = user;
         this.orderDate = orderDate;
         this.status = status;
@@ -54,16 +49,6 @@ public class Order {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-
-    public Product getProduct() {
-        return product;
-    }
-
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 
 
