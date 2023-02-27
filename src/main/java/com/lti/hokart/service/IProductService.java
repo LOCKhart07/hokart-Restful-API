@@ -10,7 +10,7 @@ public interface IProductService {
 
     Product getProductByID(int id);
 
-    List getProductsByCategory(Category category);
+    List getProductsByCategory(int CategoryId);
 
     Product addProduct(Product product);
 

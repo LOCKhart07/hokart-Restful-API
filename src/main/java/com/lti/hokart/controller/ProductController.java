@@ -11,11 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = {"/products/", "/products"})
+@RequestMapping(value = {"/products"})
 public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    //  http://127.0.0.1:8069/api/products/category?id=1
+    @RequestMapping(value = "category", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<List> getProductsByCategory(@RequestParam(value = "id") int categoryId) {
+        List<Product> products = productService.getProductsByCategory(categoryId);
+        HttpStatus status = HttpStatus.FOUND;
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Message", "Products by category!");
+        ResponseEntity<List> response = new ResponseEntity<>(products, headers, status);
+        return response;
+    }
 
     //  http://127.0.0.1:8069/api/products
     @RequestMapping(method = RequestMethod.GET, produces = "application/json")
@@ -68,4 +79,6 @@ public class ProductController {
         ResponseEntity<Product> response = new ResponseEntity<>(updatedProduct, headers, status);
         return response;
     }
+
+
 }

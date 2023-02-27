@@ -1,7 +1,6 @@
 package com.lti.hokart.service;
 
 import com.lti.hokart.exception.ProductNotFoundException;
-import com.lti.hokart.model.Category;
 import com.lti.hokart.model.Product;
 import com.lti.hokart.repository.ProductRepository;
 import org.slf4j.Logger;
@@ -41,8 +40,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List getProductsByCategory(Category category) {
-        return null;
+    public List getProductsByCategory(int CategoryId) {
+        List<Product> products = productRepository.findByCategoryCategoryId(1);
+        LOGGER.info("Fetched all products in category");
+        return products;
     }
 
     @Override
