@@ -29,6 +29,8 @@ public class ProductReview {
     @NotNull
     private Integer rating;
 
+	private String comment;
+
     public Long getId() {
 		return id;
 	}
@@ -69,5 +71,5 @@ public class ProductReview {
 		this.comment = comment;
 	}
 
-	private String comment;
+
 }

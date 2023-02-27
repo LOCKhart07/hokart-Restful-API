@@ -3,6 +3,7 @@ package com.lti.hokart.service;
 import com.lti.hokart.exception.ProductNotFoundException;
 import com.lti.hokart.model.AppUser;
 import com.lti.hokart.model.Order;
+import com.lti.hokart.model.Product;
 import com.lti.hokart.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,6 +57,13 @@ public class OrderService implements IOrderService {
 
     @Override
     public List<Order> getOrdersByUser(AppUser appUser) {
-        return null;
+        List<Order> orders = orderRepository.findByUser_AppUserId(appUser);
+        if (orders.isEmpty()) {
+            String errorMessage = "No orders for that user exist";
+            LOGGER.warn(errorMessage);
+            throw new ProductNotFoundException(errorMessage);
+        }
+        LOGGER.info("Fetched all orders for this user");
+        return orders;
     }
 }
