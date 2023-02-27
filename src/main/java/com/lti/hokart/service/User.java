@@ -1,7 +1,7 @@
 package com.lti.hokart.service;
 
+import com.lti.hokart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.lti.hokart.Repository.UserRepository;
 
 public class User {
 	    
