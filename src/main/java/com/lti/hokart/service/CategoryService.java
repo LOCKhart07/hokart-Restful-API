@@ -6,12 +6,15 @@ import com.lti.hokart.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CategoryService implements ICategoryService {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     CategoryRepository categoryRepository;
 
