@@ -13,7 +13,7 @@ public class Category {
     int categoryId;
 
     @Column(name = "category_name")
-    String CategoryName;
+    private String CategoryName;
 
 
     public Category(int categoryId, String CategoryName, String imageUrl) {
@@ -47,5 +47,6 @@ public class Category {
 
     @Override
     public String toString() {
+        return "Category{" + "categoryId=" + categoryId + ", CategoryName='" + CategoryName + '\'' + '}';
     }
 }
