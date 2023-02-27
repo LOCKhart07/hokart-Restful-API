@@ -10,12 +10,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "product_reviews")
 public class ProductReview {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "review_sequence", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_sequence")
     private Long id;
 
     @ManyToOne
@@ -24,7 +26,7 @@ public class ProductReview {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private AppUser user;
 
     @NotNull
     private Integer rating;
@@ -45,11 +47,11 @@ public class ProductReview {
 		this.product = product;
 	}
 
-	public User getUser() {
+	public AppUser getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(AppUser user) {
 		this.user = user;
 	}
 

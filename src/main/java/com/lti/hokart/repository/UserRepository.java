@@ -2,32 +2,15 @@ package com.lti.hokart.repository;
 
 import java.util.Date;
 
+import com.lti.hokart.model.AppUser;
+import com.lti.hokart.model.Product;
 import com.lti.hokart.service.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<AppUser, Integer> {
 
-	public User save(User user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public User findByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public static int count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public static int countByLastLoginDateBetween(Date startDate, Date endDate) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-
-	
+    public User save(User user);
 
 }

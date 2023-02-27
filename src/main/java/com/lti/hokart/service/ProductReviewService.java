@@ -2,11 +2,11 @@ package com.lti.hokart.service;
 
 import java.util.List;
 
-import org.apache.catalina.User;
+import com.lti.hokart.model.AppUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lti.hokart.Repository.ProductReviewRepository;
+import com.lti.hokart.repository.ProductReviewRepository;
 import com.lti.hokart.model.Product;
 import com.lti.hokart.model.ProductReview;
 
@@ -21,11 +21,11 @@ public class ProductReviewService {
         return productReviewRepository.findByProduct(product);
     }
 
-    public List<ProductReview> getUserProductReviews(User user) {
-        return ProductReviewRepository.findByUser(user);
+    public List<ProductReview> getUserProductReviews(AppUser user) {
+        return productReviewRepository.findByUser(user);
     }
 
-    public ProductReview addProductReview(Product product, User user, Integer rating, String comment) {
+    public ProductReview addProductReview(Product product, AppUser user, Integer rating, String comment) {
         ProductReview review = new ProductReview();
         review.setProduct(product);
         review.setUser(user);
@@ -33,10 +33,10 @@ public class ProductReviewService {
         review.setComment(comment);
         return productReviewRepository.save(review);
     }
-    public void deleteProductReview(Long reviewId, User user) {
+    public void deleteProductReview(Long reviewId, AppUser user) {
         java.util.Optional<ProductReview> review = java.util.Optional.empty();
 		try {
-			review = ProductReviewRepository.findByIdAndUser(reviewId, user);
+			review = productReviewRepository.findByIdAndUser(reviewId, user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

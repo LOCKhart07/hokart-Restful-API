@@ -28,14 +28,5 @@ public class Analytics {
 	        return totalSales;
 	    }
 	    
-	    public int getTotalUserCount() {
-	        return UserRepository.count();
-	    }
-	    
-	    public int getActiveUserCountByDateRange(Date startDate, Date endDate) {
-	        return UserRepository.countByLastLoginDateBetween(startDate, endDate);
-	    }
-	    
-	    
 	    
 	}

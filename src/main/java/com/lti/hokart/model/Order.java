@@ -12,103 +12,93 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-	@Table(name = "orders")
-	public class Order {
-	    
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
-	    
-	    @ManyToOne
-	    @JoinColumn(name = "seller_id", nullable = false)
-	    private Seller seller;
-	    
-	    @ManyToOne
-	    @JoinColumn(name = "product_id", nullable = false)
-	    private Product product;
-	    
-	    @ManyToOne
-	    @JoinColumn(name = "user_id", nullable = false)
-	    private User user;
-	    
-	    @Column(name = "order_date", nullable = false)
-	    private Date orderDate;
-	    
-	    @Column(name = "status", nullable = false)
-	    private String status;
-	    
-	public Long getId() {
-			return id;
-		}
-		public Order(Long id, Seller seller, Product product, User user, Date orderDate, String status) {
-			super();
-			this.id = id;
-			this.seller = seller;
-			this.product = product;
-			this.user = user;
-			this.orderDate = orderDate;
-			this.status = status;
-		}
+@Table(name = "orders")
+public class Order {
+
+    @Id
+    @GenericGenerator(name = "order_sequence", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
+    @Column(name = "order_id")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "app_user_id", nullable = false)
+    private AppUser user;
+
+    @Column(name = "order_date", nullable = false)
+    private Date orderDate;
+
+    @Column(name = "status", nullable = false)
+    private String status;
+
+    public int getId() {
+        return id;
+    }
+
+    public Order(int id, Product product, AppUser user, Date orderDate, String status) {
+        super();
+        this.id = id;
+        this.product = product;
+        this.user = user;
+        this.orderDate = orderDate;
+        this.status = status;
+    }
 
 
-		public void setId(Long id) {
-			this.id = id;
-		}
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
-		public Seller getSeller() {
-			return seller;
-		}
+    public Product getProduct() {
+        return product;
+    }
 
 
-		public void setSeller(Seller seller) {
-			this.seller = seller;
-		}
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
 
-		public Product getProduct() {
-			return product;
-		}
+    public AppUser getUser() {
+        return user;
+    }
 
 
-		public void setProduct(Product product) {
-			this.product = product;
-		}
+    public void setUser(AppUser user) {
+        this.user = user;
+    }
 
 
-		public User getUser() {
-			return user;
-		}
+    public Date getOrderDate() {
+        return orderDate;
+    }
 
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
+    }
 
 
-		public Date getOrderDate() {
-			return orderDate;
-		}
+    public String getStatus() {
+        return status;
+    }
 
 
-		public void setOrderDate(Date orderDate) {
-			this.orderDate = orderDate;
-		}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-
-		public String getStatus() {
-			return status;
-		}
-
-
-		public void setStatus(String status) {
-			this.status = status;
-		}
-	public int getTotalPrice() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public int getTotalPrice() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

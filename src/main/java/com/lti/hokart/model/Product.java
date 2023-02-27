@@ -8,41 +8,6 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 @Table(name = "product")
 public class Product {
-	
-	@NotNull(message = "Product name is required.")
-    @Basic(optional = false)
-    private String name;
-
-    public int getProductId() {
-		return productId;
-	}
-
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
-	public double getProductPrice() {
-		return productPrice;
-	}
-
-	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
-	}
-
-	public void setId(Long id) {
-	}
-
-	public void setPrice(Double price) {
-	}
-
 	@Id
     @GenericGenerator(name = "product_sequence", strategy = "increment")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_sequence")

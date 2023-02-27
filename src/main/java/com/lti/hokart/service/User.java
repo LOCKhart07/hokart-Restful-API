@@ -12,10 +12,6 @@ public class User {
 	        return userRepository.save(user);
 	    }
 	    
-	    public User getUserByEmail(String email) {
-	        return userRepository.findByEmail(email);
-	    }
-	    
 	    // other methods for updating and deleting user
 	    
 	}
