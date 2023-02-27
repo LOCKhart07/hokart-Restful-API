@@ -40,8 +40,13 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List getProductsByCategory(int CategoryId) {
-        List<Product> products = productRepository.findByCategoryCategoryId(1);
+    public List getProductsByCategory(int categoryId) {
+        List<Product> products = productRepository.findByCategoryCategoryId(categoryId);
+        if (products.isEmpty()) {
+            String errorMessage = "No products in that category or category doesnt exists";
+            LOGGER.warn(errorMessage);
+            throw new ProductNotFoundException(errorMessage);
+        }
         LOGGER.info("Fetched all products in category");
         return products;
     }
