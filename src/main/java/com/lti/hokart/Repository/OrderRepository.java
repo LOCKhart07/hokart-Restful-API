@@ -1,4 +1,4 @@
-package com.lti.hokart.repository;
+package com.lti.hokart.Repository;
 
 import java.util.Date;
 import java.util.List;
