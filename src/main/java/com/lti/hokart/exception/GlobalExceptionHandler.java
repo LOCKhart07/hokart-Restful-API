@@ -1,6 +1,7 @@
 package com.lti.hokart.exception;
 
 import com.lti.hokart.model.Category;
+import com.lti.hokart.model.Order;
 import com.lti.hokart.model.Product;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,14 @@ public class GlobalExceptionHandler {
         httpHeaders.add("message", e.getMessage());
         return new ResponseEntity<>(null, httpHeaders, httpStatus);
     }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<Order> handleOrderNotFoundException(OrderNotFoundException e) {
+        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("message", e.getMessage());
+        return new ResponseEntity<>(null, httpHeaders, httpStatus);
+    }
+
 
 }

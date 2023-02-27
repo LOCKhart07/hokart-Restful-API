@@ -6,7 +6,6 @@ import java.util.List;
 import com.lti.hokart.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.lti.hokart.repository.UserRepository;
 import com.lti.hokart.model.Order;
 
 public class Analytics {
