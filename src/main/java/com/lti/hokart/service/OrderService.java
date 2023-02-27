@@ -3,15 +3,16 @@ package com.lti.hokart.service;
 import com.lti.hokart.exception.ProductNotFoundException;
 import com.lti.hokart.model.AppUser;
 import com.lti.hokart.model.Order;
-import com.lti.hokart.model.Product;
 import com.lti.hokart.repository.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class OrderService implements IOrderService {
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
@@ -20,6 +21,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public Order createOrder(Order order) {
+        order.setStatus("inCart");
         return orderRepository.save(order);
     }
 
@@ -34,6 +36,7 @@ public class OrderService implements IOrderService {
     public Order placeOrder(int id) {
         Order order = getOrderById(id);
         order.setStatus("placed");
+        orderRepository.save(order);
         return order;
     }
 

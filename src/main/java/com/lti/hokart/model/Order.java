@@ -38,12 +38,16 @@ public class Order {
         return id;
     }
 
-    public Order(int id, Product product, AppUser user, Date orderDate, String status) {
+    public Order(int id, AppUser user, Date orderDate, String status) {
         super();
         this.id = id;
         this.user = user;
         this.orderDate = orderDate;
         this.status = status;
+    }
+
+    public Order(){
+        super();
     }
 
 

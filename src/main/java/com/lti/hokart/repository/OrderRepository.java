@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
-	public List<Order> findByOrderDateBetween(Date startDate, Date endDate) ;
+	List<Order> findByOrderDateBetween(Date startDate, Date endDate) ;
+//	List<Product> findByCategoryCategoryId(int CategoryId);
 
 }
