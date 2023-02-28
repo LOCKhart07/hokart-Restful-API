@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.lti.hokart.model.AppUser;
-import org.apache.catalina.User;
 
 import com.lti.hokart.model.Product;
 import com.lti.hokart.model.ProductReview;

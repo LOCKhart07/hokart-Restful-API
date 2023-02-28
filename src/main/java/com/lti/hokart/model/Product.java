@@ -1,7 +1,6 @@
 package com.lti.hokart.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 

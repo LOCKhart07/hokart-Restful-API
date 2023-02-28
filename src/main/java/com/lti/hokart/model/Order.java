@@ -2,8 +2,6 @@ package com.lti.hokart.model;
 
 import java.util.Date;
 
-import org.apache.catalina.User;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

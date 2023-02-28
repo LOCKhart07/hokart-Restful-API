@@ -1,7 +1,6 @@
 package com.lti.hokart.controller;
 
 import com.lti.hokart.model.AppUser;
-import com.lti.hokart.model.Product;
 import com.lti.hokart.service.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
